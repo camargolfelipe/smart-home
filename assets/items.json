@@ -1,48 +1,53 @@
 {
-    "mock":{
-       "devices":[
-          {
-             "title":"Speakers",
-             "type":"sound",
-             "location":"Living Room",
-             "active":true,
-             "icon":"sound"
-          },
-          {
-             "title":"Humidifier",
-             "type":"humidifier",
-             "location":"Living Room",
-             "active":true,
-             "icon":"humidifier"
-          },
-          {
-             "title":"Headlights",
-             "type":"lights",
-             "location":"Bedroom",
-             "active":false,
-             "icon":"lights"
-          },
-          {
-             "title":"TV",
-             "type":"electronics",
-             "location":"Living Room",
-             "active":false,
-             "icon":"TV"
-          },
-          {
-             "title":"Thermostat",
-             "type":"electronics",
-             "location":"Kitchen",
-             "active":true,
-             "icon":"thermostat"
-          }
-       ],
-       "image":{
-          "src":"Images/Sun.png",
-          "name":"sun1",
-          "hOffset":250,
-          "vOffset":250,
-          "alignment":"center"
-       }
-    }
- }  
+   "mock":{
+      "devices":[
+         {
+            "title":"Speakers",
+            "description":"Colony House - Julia",
+            "type":"sound",
+            "location":"Living Room",
+            "active":true,
+            "icon":"sound"
+         },
+         {
+            "title":"Humidifier",
+            "description":"74",
+            "type":"humidifier",
+            "location":"Living Room",
+            "active":true,
+            "icon":"humidifier"
+         },
+         {
+            "title":"Headlights",
+            "description":"45",
+            "type":"lights",
+            "location":"Bedroom",
+            "active":true,
+            "icon":"lights"
+         },
+         {
+            "title":"TV",
+            "description":"Go to Remote",
+            "type":"TV",
+            "location":"Living Room",
+            "active":false,
+            "icon":"TV"
+         },
+         {
+            "title":"Thermostat",
+            "description":"21° C",
+            "type":"electronics",
+            "location":"Kitchen",
+            "active":true,
+            "icon":"thermostat"
+         }
+      ],
+      "image":{
+         "src":"Images/Sun.png",
+         "name":"sun1",
+         "hOffset":250,
+         "vOffset":250,
+         "alignment":"center"
+      }
+   }
+}

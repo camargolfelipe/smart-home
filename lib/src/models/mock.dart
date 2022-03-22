@@ -46,15 +46,23 @@ class Mock {
 
 class Devices {
   String? title;
+  String? description;
   String? type;
   String? location;
   bool? active;
   String? icon;
 
-  Devices({this.title, this.type, this.location, this.active, this.icon});
+  Devices(
+      {this.title,
+      this.description,
+      this.type,
+      this.location,
+      this.active,
+      this.icon});
 
   Devices.fromJson(Map<String, dynamic> json) {
     title = json['title'];
+    description = json['description'];
     type = json['type'];
     location = json['location'];
     active = json['active'];
@@ -64,6 +72,7 @@ class Devices {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['title'] = this.title;
+    data['description'] = this.description;
     data['type'] = this.type;
     data['location'] = this.location;
     data['active'] = this.active;
