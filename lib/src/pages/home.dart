@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           string.menu_hello + ', \nLuís Felipe',
                           style: TextStyle(
-                            fontSize: 24.0,
+                            fontSize: 22.0,
                             color: ice,
                             fontWeight: FontWeight.bold,
                           ),

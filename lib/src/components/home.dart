@@ -8,6 +8,7 @@ import 'package:smartsmart/src/pages/home.dart';
 import 'package:smartsmart/src/utils/colors.dart';
 import 'package:smartsmart/src/utils/routes.dart';
 
+import '../pages/devices/air.dart';
 import '../pages/devices/lights.dart';
 
 class HomeBarItens extends StatelessWidget {
@@ -158,7 +159,7 @@ route(context, type, bool isActive, String description) {
     case 'TV':
       return routes.constructed(context, TVPage(isActive));
     case 'thermostat':
-      return routes.constructed(context, HomePage());
+      return routes.constructed(context, AirPage(isActive));
     default:
       return routes.constructed(context, HomePage());
   }
