@@ -2,35 +2,34 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:line_icons/line_icons.dart';
-import 'package:smartsmart/src/pages/devices/tv.dart';
-import 'package:smartsmart/src/pages/home.dart';
+import 'package:smartsmart/src/functions/home.dart';
 import 'package:smartsmart/src/utils/colors.dart';
-import 'package:smartsmart/src/utils/routes.dart';
-
-import '../pages/devices/air.dart';
-import '../pages/devices/lights.dart';
 
 class HomeBarItens extends StatelessWidget {
   IconData icon;
   String label;
-  HomeBarItens(this.icon, this.label, {Key? key}) : super(key: key);
+  Function()? function;
+  HomeBarItens(this.icon, this.label, {this.function, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Row(
-        children: [
-          Icon(
-            icon,
-            size: 16.0,
-            color: white,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: Text(label, style: TextStyle(color: ice, fontSize: 14.0)),
-          ),
-        ],
+      child: GestureDetector(
+        onTap: function,
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              size: 16.0,
+              color: white,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Text(label, style: TextStyle(color: ice, fontSize: 14.0)),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -141,130 +140,5 @@ class _HomeGridItemState extends State<HomeGridItem> {
         ),
       ),
     );
-  }
-}
-
-route(context, type, bool isActive, String description) {
-  Routes routes = Routes();
-  switch (type) {
-    case 'humidifier':
-      return routes.constructed(context, HomePage());
-    case 'lights':
-      return routes.constructed(
-          context, LightPage(isActive, double.parse(description)));
-    case 'sound':
-      return routes.constructed(context, HomePage());
-    case 'electronics':
-      return routes.constructed(context, HomePage());
-    case 'TV':
-      return routes.constructed(context, TVPage(isActive));
-    case 'thermostat':
-      return routes.constructed(context, AirPage(isActive));
-    default:
-      return routes.constructed(context, HomePage());
-  }
-}
-
-Widget icon(String icon) {
-  switch (icon) {
-    case 'sound':
-      return Icon(LineIcons.music, color: ice, size: 64.0);
-    case 'humidifier':
-      return Icon(LineIcons.water, color: ice, size: 64.0);
-    case 'lights':
-      return Icon(LineIcons.lightbulb, color: ice, size: 64.0);
-    case 'TV':
-      return Icon(LineIcons.television, color: ice, size: 64.0);
-    case 'thermostat':
-      return Icon(LineIcons.snowflake, color: ice, size: 64.0);
-    default:
-      return Icon(LineIcons.television, color: ice, size: 64.0);
-  }
-}
-
-Widget description(String type, String description) {
-  switch (type) {
-    case 'humidifier':
-    case 'lights':
-      return Column(
-        children: [
-          Text(
-            '$description%',
-            style: TextStyle(color: grey),
-          ),
-          SliderTheme(
-              data: const SliderThemeData(
-                thumbShape: RoundSliderThumbShape(enabledThumbRadius: 6),
-              ),
-              child: Slider(
-                activeColor: thirdColor,
-                thumbColor: ice,
-                min: 1.0,
-                max: 100.0,
-                value: double.parse(description),
-                onChanged: (double value) {},
-              )),
-        ],
-      );
-    case 'sound':
-      return Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(description, style: TextStyle(color: grey)),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(LineIcons.backward, color: grey),
-              Icon(LineIcons.play, color: grey),
-              Icon(LineIcons.forward, color: grey),
-            ],
-          )
-        ],
-      );
-    case 'electronics':
-    case 'TV':
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0), color: mainColor),
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text(description, style: TextStyle(color: grey)),
-            )),
-      );
-
-    case 'thermostat':
-      return Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('$description C', style: TextStyle(color: grey)),
-          ),
-          SliderTheme(
-              data: const SliderThemeData(
-                thumbShape: RoundSliderThumbShape(enabledThumbRadius: 6),
-              ),
-              child: Slider(
-                min: 1.0,
-                max: 100.0,
-                value: double.parse(description),
-                onChanged: (double value) {},
-              )),
-        ],
-      );
-    default:
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0), color: mainColor),
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text(description, style: TextStyle(color: grey)),
-            )),
-      );
   }
 }

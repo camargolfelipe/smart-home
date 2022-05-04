@@ -28,15 +28,15 @@
          {
             "title":"TV",
             "description":"Go to Remote",
-            "type":"TV",
+            "type":"tv",
             "location":"Living Room",
             "active":false,
             "icon":"TV"
          },
          {
             "title":"Thermostat",
-            "description":"21° C",
-            "type":"electronics",
+            "description":"21",
+            "type":"air",
             "location":"Kitchen",
             "active":true,
             "icon":"thermostat"

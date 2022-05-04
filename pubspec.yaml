@@ -64,8 +64,12 @@ flutter:
     - assets/items.json
     - assets/prints/print1.png
     - assets/prints/print2.png
-    - assets/tv/netflix.json
-    - assets/tv/prime-video.json
+    - assets/lottie/air/coldest.json
+    - assets/lottie/air/cold.json
+    - assets/lottie/air/hot.json
+    - assets/lottie/air/hotest.json
+    - assets/lottie/tv/netflix.json
+    - assets/lottie/tv/prime-video.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

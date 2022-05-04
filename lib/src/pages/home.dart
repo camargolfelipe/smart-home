@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icon.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:smartsmart/src/components/home.dart';
+import 'package:smartsmart/src/functions/general.dart';
 import 'package:smartsmart/src/models/mock.dart';
 import 'package:smartsmart/src/utils/colors.dart';
 import 'package:smartsmart/src/utils/strings.dart';
@@ -16,7 +18,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Strings string = Strings();
-
+  Dialogs dialog = Dialogs();
+  bool lock = true;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -54,7 +57,31 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             HomeBarItens(LineIcons.thermometer, '23° C'),
                             HomeBarItens(LineIcons.water, '76%'),
-                            HomeBarItens(LineIcons.lock, 'locked'),
+                            HomeBarItens(
+                                lock ? LineIcons.lock : LineIcons.lockOpen,
+                                lock ? 'locked' : 'unlocked', function: () {
+                              lock
+                                  ? dialog.simple(
+                                      context,
+                                      'Destrancar porta?',
+                                      'Após 10min de inatividade a porta será trancada automaticamente',
+                                      true, function: (() {
+                                      setState(() {
+                                        lock = !lock;
+                                        Navigator.pop(context);
+                                      });
+                                    }))
+                                  : dialog.simple(
+                                      context,
+                                      'A porta foi trancada!',
+                                      '',
+                                      false, function: (() {
+                                      setState(() {
+                                        lock = !lock;
+                                        Navigator.pop(context);
+                                      });
+                                    }));
+                            }),
                             HomeBarItens(LineIcons.wifi, '47 Mb/s'),
                           ],
                         ),

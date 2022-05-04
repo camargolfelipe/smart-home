@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:lottie/lottie.dart';
+import 'package:smartsmart/src/components/tv.dart';
 import '../../utils/colors.dart';
 import '../../utils/strings.dart';
 
@@ -49,36 +50,16 @@ class _TVPageState extends State<TVPage> {
             ),
             Row(
               children: [
-                Expanded(
-                    child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      widget.isActive = true;
-                    });
-                  },
-                  child: Lottie.asset(
-                    'assets/tv/netflix.json',
-                    repeat: false,
-                    width: 200,
-                    height: 200,
-                    fit: BoxFit.contain,
-                  ),
-                )),
-                Expanded(
-                    child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      widget.isActive = true;
-                    });
-                  },
-                  child: Lottie.asset(
-                    'assets/tv/prime-video.json',
-                    repeat: false,
-                    width: 200,
-                    height: 200,
-                    fit: BoxFit.contain,
-                  ),
-                )),
+                TVChannel('assets/lottie/tv/netflix.json', () {
+                  setState(() {
+                    widget.isActive = true;
+                  });
+                }),
+                TVChannel('assets/lottie/tv/prime-video.json', () {
+                  setState(() {
+                    widget.isActive = true;
+                  });
+                }),
               ],
             ),
             Text(
